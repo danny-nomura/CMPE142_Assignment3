@@ -29,17 +29,21 @@ Process physicalMemory[20];
 
 // Main Function
 int main(){
+    
     char *fileName = "memory.dat";
     int totalActions = ReadFile(fileName);
     
     // To test that it works....
-    printf("Number of actions in memory.dat:\t%s", totalActions);
+    printf("Number of actions in memory.dat:\t %d", totalActions);
 }
 
 int ReadFile(char *fileName)
 {
     FILE *filePtr = NULL;
     int  i = 0;
+    
+    printf("Testing");
+
     
     if ((filePtr = fopen(fileName, "r")) == NULL)
     {
