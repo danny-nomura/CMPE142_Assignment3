@@ -23,7 +23,7 @@ using namespace std;
 #define MAX_ARRAY_SIZE 50
 
 // Function Declaration
-int ReadFile(char *fileName);
+int ReadFile(string fileName);
 void FIFO(int);
 void LRU(int);
 void RANDOM(int);
@@ -45,20 +45,21 @@ Process physicalMemory[20];
 // Main Function
 int main(){
 
-    char *fileName = "memory.dat";
+    string fileName = "memory.dat";
     int totalActions = ReadFile(fileName);
 
     // To test that it works....
     cout << "Number of actions in memory.dat:\t " << totalActions;
 }
 
-int ReadFile(char *fileName)
+int ReadFile(string fileName)
 {
 	ifstream infile(fileName); // connect file to stream
 
-	assert(!infile.fail());// make sure it is not a failure
+	//assert(!infile.fail());// make sure it is not a failure
 
 	int i = 0; // counter
+
 	// Loop until we reach the end of the file
 	// Each loop, we set process id, action, and page for current line
 	// Outside loop, we increment counter
@@ -68,8 +69,7 @@ int ReadFile(char *fileName)
 		while(getline(infile, temp)) // get the whole line, place in temp
 		{
 			// Parse string, place individual items in proper position
-			stringstream myLine(temp);
-			myLine >> myProcess[i].PROCESS_ID >> myProcess[i].ACTION >> myProcess[i].PAGE;
+			infile >> myProcess[i].PROCESS_ID >> myProcess[i].ACTION >> myProcess[i].PAGE;
 		}
 		// Exit while loop after a line, increment i
 		i++;
