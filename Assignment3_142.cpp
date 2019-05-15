@@ -1,11 +1,6 @@
 //============================================================================
 // Name    	: Assignment3_142.cpp
-// Author  	:
-// Version 	:
-// Copyright   : Your copyright notice
-// Description : Hello World in C++, Ansi-style
-//============================================================================
-
+// Authors 	:Steven Haertling, Danny Nomura, Konstantin Sanosyan
 // A simple memory manager
 // This program takes input from a file with three fields for a process
 // Proccess_ID , ACTION , and PAGE
@@ -141,12 +136,14 @@ void FIFO(int actions){
                 	physical_page[j].VA = myPageTable[i].PAGE;
                 	physical_page[j].dirty = 0;
                 	physical_page[j].AT = time;
+                	break;
             	}
         	}
         	//swap FIFO to allocate
         	for(j = 0; j < 20; j++){
             	//find min arrival time (AT)
             	//swap
+            	//allocate and break
         	}
 
     	}
@@ -161,7 +158,7 @@ void FIFO(int actions){
         	}
         	//check in swap
         	for(j = 0 ; j< 20; j++){
-            	//find min arival time(AT)
+            	//find min arrival time(AT)
             	//swap
         	}
         	//accessed time increment
@@ -178,7 +175,7 @@ void FIFO(int actions){
         	}
         	//check in swap
 
-        	//mark dirty // accesed time increment
+        	//mark dirty // accessed time increment
     	}
     	if(myPageTable[i].ACTION == "F"){//free
         	//page freed
@@ -186,6 +183,16 @@ void FIFO(int actions){
     	i++;
     	time++;
 	}
+	for(j=0;j<20;j++){
+    	cout << "PID: "<< physical_page[j].PID << "\t";
+    	cout << "Virtual Address: " << physical_page[j].VA << "\t";
+    	cout << "Physical Address: " << physical_page[j].PA << "\n";
+
+	}
+	cout << "Physical Memory\n" ;
+	for(j=0;j<20;j++){
+   	 cout << j << "\t" << physical_page[j].PID << "\n";
+    }
 }
 
 void LRU(int)
